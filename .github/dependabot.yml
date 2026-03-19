@@ -1,21 +1,11 @@
 
 version: 2
 updates:
-  - package-ecosystem: "pip"
-    directory: "/"
+  - package-ecosystem: "pip"   # Para Python/Poetry, use "pip" aqui
+    directory: "/"             # Ajuste se seus arquivos estiverem em subpasta
     schedule:
-      interval: "weekly"
-    # Se estiver usando Poetry, o GitHub hoje trata como ecossistema "pip"
-    # (ele lê dependências do pyproject/poetry.lock)
+      interval: "daily"        # Daily só para acelerar o próximo job (depois volte para weekly)
     open-pull-requests-limit: 5
-    allow:
-      - dependency-type: "all"
-    commit-message:
-      prefix: "chore(deps)"
-      include: "scope"
-    rebase-strategy: "auto"
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
+``
+
 
