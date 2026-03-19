@@ -6,6 +6,3 @@ updates:
     schedule:
       interval: "daily"        # Daily só para acelerar o próximo job (depois volte para weekly)
     open-pull-requests-limit: 5
-``
-
-
