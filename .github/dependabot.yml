@@ -1,8 +1,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: "pip"   # Para Python/Poetry, use "pip" aqui
-    directory: "/"             # Ajuste se seus arquivos estiverem em subpasta
+  - package-ecosystem: "pip"
+    directory: "/"
     schedule:
-      interval: "daily"        # Daily só para acelerar o próximo job (depois volte para weekly)
-    open-pull-requests-limit: 5
+      interval: "daily"
