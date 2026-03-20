@@ -14,6 +14,13 @@ def parse_yaml_untrusted(data: str):
     obj = yaml.load(data, Loader=yaml.Loader)  # intencionalmente inseguro
     return obj
 
+def run_system_command(user_input: str):
+    # command injection direto e explícito
+    os.system("ls -la " + user_input)
+
+def parse_yaml_untrusted(data: str):
+    return yaml.load(data)   # sem Loader
+
 if __name__ == "__main__":
     run_system_command("; echo POC")
     parse_yaml_untrusted("!!python/object/apply:os.system ['echo POC']")
