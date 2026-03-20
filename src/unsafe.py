@@ -1,3 +1,4 @@
+# DEMO — código inseguro proposital para alertas do CodeQL
 # src/unsafe.py
 import os
 import subprocess
