@@ -8,8 +8,8 @@ app = Flask(__name__)
 def run():
     # Fonte NÃO confiável: parâmetro de query string ?cmd=...
     cmd = request.args.get("cmd", "")
-    # SINK 1: shell=True + concatenação -> injeção de comando
-    subprocess.run("sh -lc 'ls -la " + cmd + "'", shell=True)
+    # SINK 1: evitar shell=True e concatenação para prevenir injeção de comando
+    subprocess.run(["ls", "-la", cmd])
     # SINK 2: comando de SO com concatenação
     os.system("cat " + cmd)
     return "ok"
