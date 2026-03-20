@@ -12,5 +12,3 @@ def test_main_runs(capsys):
     # Verifica se as mensagens esperadas foram impressas
     assert "Matriz 3x3:" in captured.out
     assert "Status GitHub API:" in captured.out
-out
-
