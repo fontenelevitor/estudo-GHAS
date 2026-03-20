@@ -19,5 +19,5 @@ def yml():
     # Fonte NÃO confiável: corpo (por simplicidade, use ?y= no query string)
     data = request.args.get("y", "")
     # SINK 3: desserialização insegura (sem SafeLoader)
-    obj = yaml.load(data)  # intencionalmente inseguro
+    obj = yaml.safe_load(data)
     return str(type(obj))
