@@ -1,14 +1,15 @@
+# src/unsafe.py — versão para forçar alerta no PR
 import os
 import subprocess
 
 def run_untrusted():
-    # Fonte de input não confiável
+    # Fonte de dados não confiável (user-controlled)
     user_input = input("Digite algo: ")
 
-    # SINK inseguro: concatenação + shell=True
+    # SINK 1: uso inseguro de shell + concatenação
     subprocess.run("ls -la " + user_input, shell=True)
 
-    # Alternativa insegura detectada pelo CodeQL
+    # SINK 2: comando do SO com entrada não sanitizada
     os.system("cat " + user_input)
 
 if __name__ == "__main__":
