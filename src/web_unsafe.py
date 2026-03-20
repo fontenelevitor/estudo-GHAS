@@ -10,8 +10,8 @@ def run():
     cmd = request.args.get("cmd", "")
     # SINK 1: evitar shell=True e concatenação para prevenir injeção de comando
     subprocess.run(["ls", "-la", cmd])
-    # SINK 2: comando de SO com concatenação
-    os.system("cat " + cmd)
+    # SINK 2 (FIXED): comando de SO sem uso de shell
+    subprocess.run(["cat", cmd])
     return "ok"
 
 @app.post("/yaml")
