@@ -1,16 +1,16 @@
-# src/unsafe.py — versão para forçar alerta no PR
+# src/unsafe.py — PR DELTA COM DATAFLOW EXPLÍCITO
 import os
 import subprocess
 
 def run_untrusted():
-    # Fonte de dados não confiável (user-controlled)
+    # Fonte não confiável: input() (controlado pelo usuário)
     user_input = input("Digite algo: ")
 
-    # SINK 1: uso inseguro de shell + concatenação
-    subprocess.run("ls -la " + user_input, shell=True)
+    # SINK #1: shell=True + concatenação -> padrão clássico de injeção
+    subprocess.run("sh -lc 'ls -la " + user_input + "'", shell=True)
 
-    # SINK 2: comando do SO com entrada não sanitizada
-    os.system("cat " + user_input)
+    # SINK #2: comando de SO com concatenação
+    os.system("echo start && cat " + user_input)
 
 if __name__ == "__main__":
     run_untrusted()
