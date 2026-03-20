@@ -1,6 +1,6 @@
 # src/web_unsafe.py
 from flask import Flask, request
-import subprocess, os, yaml
+import subprocess, yaml
 
 app = Flask(__name__)
 
